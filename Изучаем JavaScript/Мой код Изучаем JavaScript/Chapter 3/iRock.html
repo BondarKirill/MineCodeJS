@@ -1,0 +1,43 @@
+﻿<html>
+<head>
+<title>iRock - Виртуальный любимец Rock</title>
+<script type="text/javascript" src="cookie.js"></script>
+<script type="text/javascript">
+var userName;
+function resizeRock() {
+document.getElementById("rockImg").style.height = (document.body.clientHeight - 100) * 0.9;
+}
+function greetUser() {
+    if (navigator.cookieEnabled)
+    userName = readCookie("irock_username");
+    if (userName)
+    alert("Привет" + userName + ", Я скучал по вам.");
+    else
+    alert('Привет, я ваш виртуальный любимец Камушек');
+}
+
+function touchRock () {
+if (userName) {
+alert("Мне нравится ваше внимание, " + userName + ". Спасибо.");
+}
+else {
+userName = prompt ("Как вас зовут?", "Введите ваше имя.");
+if (userName) {
+alert("Рад вас видеть, " + userName + ".");
+if (navigator.cookieEnabled)
+writeCookie("irock_username", userName, 5 * 365);
+else
+alert("Файлы cookie не поддерживаются/не включены в вашем браузере, а значит, я вас потом не вспомню. Мне жаль.");
+}
+}
+document.getElementById("rockImg").src = "rock_happy.png";
+setTimeout("document.getElementById('rockImg').src = 'rock.png';", 3000);
+}	
+</script>
+</head>
+<body onload="resizeRock(); greetUser();" onresize="resizeRock();">
+<div style="margin-top:100px; text-align:center">
+<img id="rockImg" src="rock.png" alt="iRock" style="cursor:pointer" onclick="touchRock();" />
+</div>	
+</body>
+</html>

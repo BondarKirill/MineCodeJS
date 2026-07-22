@@ -1,0 +1,95 @@
+﻿<html>
+<head>
+<title>Приключения нарисованного человечка</title>
+
+<script type="text/javascript">
+// Выбираем в качестве текущей сцену 0 (Введение)
+var curScene = 0;
+
+function changeScene(decision) {
+// Удаляем описание сцены
+var message = "";
+
+switch (curScene) {
+case 0:
+curScene = 1;
+message = "Ваше путешествие начинается на развилке дорог.";
+break;
+case 1:
+if (decision == 1) {        
+curScene = 2;           
+message = "Вы прибыли в милый домик в лесу.";         
+}         
+else {        
+curScene = 3;        
+message = "Вы стоите на мосту с видом на тихий ручей.";        
+}   
+break;    
+case 2:        
+if (decision == 1) {         
+curScene = 4;         
+message = "Заглянув в окно, вы видите внутри дома ведьму.";       
+}       
+else {         
+curScene = 5;          
+message = "Извини, в доме живет ведьма, а ты стал частью ее похлебки.";        
+}      
+break;
+case 3:
+if (decision == 1) {
+curScene = 6;
+message = "Извини, по ту сторону моста живет тролль и ты только что стал его обедом.";
+}
+else {
+curScene = 7;
+message = "Ваш взгляд прерывается появлением огромного тролля.";
+}
+break;
+case 4:
+if (decision == 1) {
+curScene = 8;
+}
+else {
+curScene = 5;
+message = "Прости, ты стал частью ведьминого рагу.";
+}
+break;
+case 5:
+curScene = 0;
+break;
+case 6:
+curScene = 0;
+break;
+case 7:
+if (decision == 1) {
+curScene = 6;
+message = "Извините, вы стали вкусным обедом тролля.";
+}
+else {
+curScene = 9;
+}
+break;
+case 8:	
+	// Продолжение следует
+break;
+case 9:
+	// Продолжение следует
+break;
+}
+
+document.getElementById("sceneimg").src = "scene" + curScene + ".png";
+if (message != "")
+alert(message);
+}
+</script>
+</head>
+
+<body>
+	<div style="margin-top:100px; text-align:center">
+	<img id="sceneimg" src="scene0.png" alt="Stick Figure Adventure" /><br />
+	Пожалуйста выберите:
+	<input type="button" id="decision1" value="1" onclick="changeScene(1)" />
+	<input type="button" id="decision2" value="2" onclick="changeScene(2)" />
+	</div>
+</body>
+</html>
