@@ -4,12 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Камушек i-Rock</title>
+    <title>Камушек iRock - Виртуальный любимец Rock</title>
+    <script type="text/javascript">
+        function touchRock() {
+            var userName = prompt("Как Вас зовут?", "Введите Ваше имя.");
+            if (userName) {
+                alert("Рад Вас видеть, " + userName + ".");
+                document.getElementById("rockImg").src = "rock_happy.png";
+            }
+        }
+    </script>
 </head>
 
-<body>
-    (09-10.11.2026 продолжим с 49-й страницы), нужно добить 1-ую главу
-    соберись уже и добей 1-ую главу, до отъезда
+<body onload="alert('Привет, я ваш виртуальный любимец Камушек.');">
+    <div style="margin-top:100px; text-align:center">
+        <img id="rockImg" src="rock.png" alt="iRock" style="cursor:pointer" onclick="touchRock();" />
+    </div>
 </body>
 
 </html>
